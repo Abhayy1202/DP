@@ -6,7 +6,7 @@ using namespace std;
 class Solution
 {
 public:
-    void lcs(string s, string t, int n, int m, int len, string &f, vector<string> &ans, vector<vector<int>> &dp, unordered_set<string> &sols,vector<vector<int>>&memo)   //Not able to optimize this function using memoization
+    void lcs(string s, string t, int n, int m, int len, string &f, vector<string> &ans, vector<vector<int>> &dp, unordered_set<string> &sols, vector<vector<int>> &memo) // Not able to optimize this function using memoization
     {
         if (len == 0)
         {
@@ -34,23 +34,23 @@ public:
         if (s[n - 1] == t[m - 1])
         {
             f += s[n - 1];
-            lcs(s, t, n - 1, m - 1, len - 1, f, ans, dp, sols,memo);
+            lcs(s, t, n - 1, m - 1, len - 1, f, ans, dp, sols, memo);
             f.pop_back();
         }
         else
         {
             if (dp[n - 1][m] > dp[n][m - 1])
             {
-                lcs(s, t, n - 1, m, len, f, ans, dp, sols,memo);
+                lcs(s, t, n - 1, m, len, f, ans, dp, sols, memo);
             }
             else if (dp[n - 1][m] < dp[n][m - 1])
             {
-                lcs(s, t, n, m - 1, len, f, ans, dp, sols,memo);
+                lcs(s, t, n, m - 1, len, f, ans, dp, sols, memo);
             }
             else
             {
-                lcs(s, t, n - 1, m, len, f, ans, dp, sols,memo);
-                lcs(s, t, n, m - 1, len, f, ans, dp, sols,memo);
+                lcs(s, t, n - 1, m, len, f, ans, dp, sols, memo);
+                lcs(s, t, n, m - 1, len, f, ans, dp, sols, memo);
             }
         }
     }
@@ -73,7 +73,7 @@ public:
             }
 
         len = dp[x][y];
-        lcs(s, t, x, y, len, f, ans, dp, sols,memo);
+        lcs(s, t, x, y, len, f, ans, dp, sols, memo);
         sort(ans.begin(), ans.end());
         return ans;
     }
