@@ -61,7 +61,7 @@ public:
         vector<string> ans;
         string f = "";
         vector<vector<int>> dp(x + 1, vector<int>(y + 1, 0));
-        vector<vector<int>> memo(n + 1, vector<int>(m + 1, 0));
+        vector<vector<int>> memo(x + 1, vector<int>(y + 1, 0));
         unordered_set<string> sols;
         for (int i = 1; i <= x; i++)
             for (int j = 1; j <= y; j++)
